@@ -1,0 +1,12 @@
+
+<h1 (click)="add()">ADD ITEM</h1>
+<input type="text" [(ngModel)]="item">
+<br><br>
+<!-- <input type="text" (input)="onAdd($event)"> -->
+
+<div *ngFor="let item of itemList let i=index">
+    <!-- <div>{{ item}}</div>  -->
+    <input type="text" [(ngModel)]="item">
+    <button (click)="edit(i, item)">EDIT </button>
+    <button (click)="delete(i)">DELETE </button>
+</div>
