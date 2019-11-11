@@ -22,9 +22,13 @@ export class AppComponent {
   }
 
   // kt.mallia stecil todo .. refresh jne 
-  // Laita add ja delete serviceen
-  // "edit" -toiminto myös
+
+  // "edit" -toiminto serviceen
   // tee list -komponentti
+  // lisää local storage
+  // Tee responsiivinen (css) sämpylä ...
+  // Viimeistele värit , layout ym.
+  // firebase ?
 
   add() {
       // this.itemList = [...this.itemList, new ItemModel(this.item, this.index++)];
