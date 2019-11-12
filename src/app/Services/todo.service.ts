@@ -6,39 +6,34 @@ import { Item } from '../interfaces/item.interface';
 @Injectable()
 
 export class TodoService {
+      
+    itemList:Item[] = [];
+    item: Item = {id:0, toDoText: null}
 
-    
-    // itemList:Item[] = [];
-    itemLISTA = []
-   // item: Item = {id:0, toDoText: null}
-    item
 
     get() {
-        return this.itemLISTA;
+        return this.itemList;
     }
+
+    // add(item) {
+    //     this.itemList = [...this.itemList, item]; 
+    // }
 
     add(item) {
-        console.log("added", item)
-        this.itemLISTA = [...this.itemLISTA, item];
-        console.log("itemList in service: ", this.itemLISTA)
+        return new Promise((resolve, reject) => {    
+            resolve(item)
+        })
     }
 
-    edit(id, ) {
-        // Lisää taulukko-objektiin, jolla sama id; ei taulukon id:hen !
-        // this.itemList[id]= {id:id, toDoText: editItem};
-
-        console.log("itemList sama id ennen: ", this.itemLISTA)
-        // this.itemLISTA.find(item => {
-        //     return item.id === id;
-        // })
-        console.log("itemList sama id jälkeen: ", this.itemLISTA)
+    edit() {
+        // Tallenna vain muistiin, kun edit action
+        console.log("itemList edit: ", this.itemList)
     }
 
     delete(id) {
-        console.log("delete: ", id);
-        this.itemLISTA = this.itemLISTA.filter(item => {
-        return item.id !== id
-      })
+        this.itemList = this.itemList.filter(item => {
+            return item.id !== id
+        })
     }
 
 
