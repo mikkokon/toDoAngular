@@ -4,9 +4,8 @@
 <br><br>
 <!-- <input type="text" (input)="onAdd($event)"> -->
 
-<div *ngFor="let item of itemList let i=index">
-    <!-- <div>{{ item}}</div>  -->
-    <input type="text" [(ngModel)]="item">
-    <button (click)="edit(i, item)">EDIT </button>
-    <button (click)="delete(i)">DELETE </button>
+<div *ngFor="let item of itemList">
+    <input type="text" [(ngModel)]="item.toDoText">
+    <button (click)="edit(item.id)">EDIT </button>
+    <button (click)="delete(item.id)">DELETE </button>
 </div>

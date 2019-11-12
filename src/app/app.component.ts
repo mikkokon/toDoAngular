@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ItemModel } from './models/item.model';
+import { Item } from './interfaces/item.interface';
 import { TodoService } from '../app/Services/todo.service';
 
 @Component({
@@ -12,10 +13,11 @@ import { TodoService } from '../app/Services/todo.service';
 // Kt. Layout mallia: https://assist-software.net/blog/how-use-redux-angular-application
 export class AppComponent {
 
-  item;
+  //item: Item = {id:0, toDoText: null}
   // itemList: ItemModel[] = [];
-  itemList = [];
-  index = 0;
+  item;
+  itemList: Item[] = [];
+  id = 0;
 
   constructor(private todoService: TodoService) {
     
@@ -23,39 +25,35 @@ export class AppComponent {
 
   // kt.mallia stecil todo .. refresh jne 
 
+  // LUE: https://blog.fullstacktraining.com/angular-promise-vs-observable/
+  // LUE https://dev.to/avatsaev/simple-state-management-in-angular-with-only-services-and-rxjs-41p8
+  // --> Laita id - takaisin ! 
   // "edit" -toiminto serviceen
+  // Paranna muuttujien alustus ;interface ,,,
   // tee list -komponentti
   // lisää local storage
   // Tee responsiivinen (css) sämpylä ...
   // Viimeistele värit , layout ym.
-  // firebase ?
 
   add() {
-      // this.itemList = [...this.itemList, new ItemModel(this.item, this.index++)];
       console.log("item: ", this.item)
       console.log("itemList: ", this.itemList)
-      this.todoService.add(this.item);
-      this.itemList = this.todoService.get();
+      this.todoService.add( {id: this.id++, toDoText: this.item} );
+      this.itemList = [...this.todoService.get()]
       console.log("itemList: ", this.itemList)
 
   }
 
-  edit(index, editItem) {
-    console.log("item:", editItem)
-    console.log("index: ", index)
-    console.log("this.itemList[index]", this.itemList[index])
-    let temp = this.itemList[index];
-    console.log("temp: ", temp)
-    this.itemList[index]= editItem;
-    console.log("itemList: ", this.itemList)
+  edit(id,) {
+      this.todoService.edit(id)
+      this.itemList = this.todoService.get();
+      console.log("itemList: ", this.itemList)
   }
 
-  delete(index) {
-      // this.itemList = this.itemList.filter(item => {
-      //   return item.index !== index
-      // })
-      this.todoService.delete(index);
+  delete(id) {
+      this.todoService.delete(id);
       this.itemList = this.todoService.get();
+      console.log("itemList: ", this.itemList)
   }
 
 
