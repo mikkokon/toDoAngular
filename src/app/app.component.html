@@ -1,13 +1,10 @@
 
-<h1 (click)="add()">ADD ITEM</h1>
-<input type="text" [(ngModel)]="item">
+<app-add></app-add>
+
 <br><br>
 
+<div *ngFor = "let element of itemList">
+    <app-list [item] = element></app-list>
+</div>
 
-<app-list></app-list>
 
-<!-- <div *ngFor="let item of itemList">
-    <input type="text" [(ngModel)]="item.toDoText">
-    <button (click)="edit(item.id)">EDIT </button>
-    <button (click)="delete(item.id)">DELETE </button>
-</div> -->
