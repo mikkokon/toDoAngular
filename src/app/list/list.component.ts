@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../interfaces/item.interface';
 import { TodoService } from '../Services/todo.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -13,16 +14,19 @@ export class ListComponent implements OnInit {
   item;
   itemList: Item[] = [];
   id = 0;
+  private newSessionsSubs: Subscription;
 
-  constructor(public toDoService: TodoService) { }
+  constructor(public toDoService: TodoService) { 
+      // vatii observablen : Kun "add item" painettu servicen add() publish ja täällä subscribe
+      this.newSessionsSubs = this.toDoService.newDataFound().subscribe((data) => { 
+         this.itemList = data 
+      })
+  }
 
   ngOnInit() {
   }
 
-  // vatii observablen : Kun "add item" painettu servicen add() publish ja täällä subscribe
-  async add() {
-
-  }
+  
 
   edit() {
       // ([ngModel]) :ssa tallennetaan muutettu string taulukkoon this.itemList

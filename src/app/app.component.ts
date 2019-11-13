@@ -24,33 +24,14 @@ export class AppComponent {
   // kt.mallia stecil todo .. refresh jne 
   // LUE: https://blog.fullstacktraining.com/angular-promise-vs-observable/
   // LUE https://dev.to/avatsaev/simple-state-management-in-angular-with-only-services-and-rxjs-41p8
-  // tee list -komponentti
   // lisää local storage
   // Tee responsiivinen (css) sämpylä ...
   // Viimeistele värit , layout ym.
 
   add() {
-      this.todoService.add( {id: this.id++, toDoText: this.item} );
-      this.itemList = this.todoService.get();
-      console.log("itemList: ", this.itemList)
+     this.todoService.add({id: this.id++, toDoText: this.item} );
+     this.itemList = this.todoService.get();
+     console.log("itemList: ", this.itemList)
   }
-
-  // edit() {
-  //     // ([ngModel]) :ssa tallennetaan muutettu string taulukkoon this.itemList
-  //     // this.itemList = [...this.todoService.get()] :ssa : kopioita. Ei pitäisi
-  //     // olla sama referenssi muistipaikassa. Joten servicessä ei pitäisi näkyä muutos,
-  //     // mutta näkyy silti..?
-  //     // https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array?source=post_page-----9a782b17fa89----------------------
-  //     this.todoService.edit()
-  //     this.itemList = this.todoService.get() //turha
-  //     console.log("itemList: ", this.itemList)
-  // }
- 
-  // delete(id) {
-  //     this.todoService.delete(id);
-  //     this.itemList = this.todoService.get()
-  //     console.log("itemList: ", this.itemList)
-  // }
-
 
 }
